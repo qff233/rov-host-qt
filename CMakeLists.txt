@@ -2,6 +2,7 @@ cmake_minimum_required(VERSION 3.16)
 
 project(rov-host-qt VERSION 0.1 LANGUAGES CXX)
 
+set(CMAKE_AUTORCC ON)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_STANDARD 17)
 
@@ -14,13 +15,21 @@ qt_standard_project_setup(REQUIRES 6.5)
 qt_add_executable(approv-host-qt
     main.cpp
     src/component/frameless_window.cpp
+    qml.qrc
 )
 
 qt_add_qml_module(approv-host-qt
     URI rov-host-qt
     VERSION 1.0
     QML_FILES Main.qml
-    QML_FILES ui/TitleBar.qml
+    QML_FILES ui/WindowTitle.qml
+    QML_FILES ui/WindowEntry.qml
+    QML_FILES ui/common/ImageButton.qml
+    QML_FILES ui/common/ScaleImageButton.qml
+    RESOURCES qml.qrc
+    QML_FILES ui/Slave.qml
+    QML_FILES ui/SlaveConfig.qml
+
 )
 
 # Qt for iOS sets MACOSX_BUNDLE_GUI_IDENTIFIER automatically since Qt 6.1.

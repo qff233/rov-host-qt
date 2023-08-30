@@ -55,7 +55,7 @@ bool FrameLessWindow::eventFilter(QObject* obj, QEvent* evt)
             MouseEvent currentEven = getResizeArea(mouse->pos());
             setCursorEvent(currentEven, false);
         }
-    } 
+    }
     return QQuickWindow::eventFilter(obj, evt);
 }
 
@@ -120,13 +120,12 @@ FrameLessWindow::MouseEvent FrameLessWindow::getResizeArea(const QPoint& pos)
     }
 }
 
-void FrameLessWindow::setWindowGeometry(const QPoint &pos)
+void FrameLessWindow::setWindowGeometry(const QPoint& pos)
 {
     QPoint offset = m_globalPressPos - pos;
 
     if (m_globalPressPos == pos)
         return;
-
 
     switch (m_event) {
     case MouseEvent::TopLeft:
@@ -139,7 +138,8 @@ void FrameLessWindow::setWindowGeometry(const QPoint &pos)
         setGeometryCalc(m_preSize - QSize(offset.x(), -offset.y()), m_pressPos - QPoint(0, offset.y()));
         break;
     case MouseEvent::Left:
-        setGeometryCalc(m_preSize + QSize(offset.x(), 0), m_pressPos - QPoint(offset.x(), 0));;
+        setGeometryCalc(m_preSize + QSize(offset.x(), 0), m_pressPos - QPoint(offset.x(), 0));
+        ;
         break;
     case MouseEvent::Right:
         setGeometryCalc(m_preSize - QSize(offset.x(), 0), position());
@@ -156,10 +156,9 @@ void FrameLessWindow::setWindowGeometry(const QPoint &pos)
     default:
         break;
     }
-
 }
 
-void FrameLessWindow::setGeometryCalc(const QSize &size, const QPoint &pos)
+void FrameLessWindow::setGeometryCalc(const QSize& size, const QPoint& pos)
 {
     QPoint endPos = m_pressPos;
     QSize endSize = minimumSize();
@@ -167,7 +166,7 @@ void FrameLessWindow::setGeometryCalc(const QSize &size, const QPoint &pos)
         endPos.setX(pos.x());
         endSize.setWidth(size.width());
     } else if (pos.x() != endPos.x()) {
-        endPos.setX(m_pressPos.x() +  m_preSize.width() - minimumWidth());
+        endPos.setX(m_pressPos.x() + m_preSize.width() - minimumWidth());
     }
 
     if (size.height() > minimumHeight()) {
@@ -205,12 +204,11 @@ void FrameLessWindow::setCursorEvent(MouseEvent event, bool isRefrensh)
     case MouseEvent::Right:
         setCursor(Qt::SizeHorCursor);
         break;
-    default :
-        if(m_event != event)
-            unsetCursor();
+    default:
+        // if(m_event != event)
+        unsetCursor();
         break;
     }
-    if(isRefrensh)
+    if (isRefrensh)
         m_event = event;
 }
-

@@ -1,28 +1,29 @@
-import QtQuick
-import QtQuick.Window
-import QtQuick.Controls
-
 import Rov.window
 
 import "./ui"
 
 FrameLessWindow {
-    property bool isMoveWindow: false
-    property point rootWindowTitleMousePos: Qt.point(x,y)
+    id: main_window
 
+    property string titleStr: "水下机器人上位机"
     property var areas: [
-            Qt.rect(0, 0, 99999, 30)
+            Qt.rect(0, 0, 99999, 40)
     ]
 
-    id: main_window
     width: 1280
-    minimumWidth: 1280
     height: 720
-    minimumHeight: 720
+
     visible: true
+    title: titleStr
+    color: "transparent"
+    resizable: true
     moveArea:  areas
+    minimumWidth: 1280
+    minimumHeight: 720
 
-    onTitleChanged: rootWindowTitleBarTitleText.text = title
-
-    TitleBar{}
+    WindowEntry {
+        anchors.fill: parent
+        anchors.margins: main_window.maximized ? 0 : 8
+        radius: main_window.maximized ? 0 : 4
+    }
 }
