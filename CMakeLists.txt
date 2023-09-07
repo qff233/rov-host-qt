@@ -20,6 +20,7 @@ qt_add_qml_module(approv-host-qt
     URI rov-host-qt
     VERSION 1.0
     QML_FILES Main.qml
+    QML_FILES qml/slave_window/FlowBar.qml qml/slave_window/SlaveWindow.qml qml/slave_window/Setting.qml qml/About.qml
 )
 
 # Qt for iOS sets MACOSX_BUNDLE_GUI_IDENTIFIER automatically since Qt 6.1.
