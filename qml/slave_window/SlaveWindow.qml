@@ -4,13 +4,21 @@ import QtQuick.Layouts
 import QtMultimedia
 
 Rectangle {
+    property int tool_bar_width: 40 
+    
+    MouseArea {
+        anchors.fill: parent
+        width: tool_bar_width
+        onMouseXChanged: mouseX <= tool_bar_width ? tool_bar.visible = true : tool_bar.visible = false
+    }
     RowLayout {
         anchors.fill: parent
+        spacing: 0
+        SlaveToolBar {
+            id: tool_bar 
+            visible: true
 
-        Setting {
-            id: slave_setting
-            visible: false
-
+            Layout.preferredWidth: tool_bar_width
             Layout.fillHeight: true
         }
         Rectangle {

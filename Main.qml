@@ -27,34 +27,19 @@ ApplicationWindow {
             font.family: "Microsoft YaHei"
             font.pointSize: 10
 
-            Menu {
-                width: 50
-                font.family: parent.font.family
-                font.pointSize: parent.font.pointSize
-                title: "同步操作"
-                Action {
-                    text: "拍照"
-                }
-                Action {
-                    text: "录制"
-                }
+            MenuBarItem {
+                text: "同步拍照"
             }
-            Menu {
-                font.family: parent.font.family
-                font.pointSize: parent.font.pointSize
-                title: "设置"
+            MenuBarItem {
+                text: "同步录制"
             }
-            Menu {
-                width: 50
-                font.family: parent.font.family
-                font.pointSize: parent.font.pointSize
-                title: "帮助"
-
-                Action {
-                    text: "关于"
-                    onTriggered: about_window.visible ? about_window.visible
-                                                        = false : about_window.visible = true
-                }
+            MenuBarItem {
+                text: "首选项"
+            }
+            MenuBarItem {
+                text: "关于"
+                onTriggered: about_window.visible ? about_window.visible
+                                                = false : about_window.visible = true
             }
         }
 

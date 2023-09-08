@@ -2,7 +2,7 @@ import QtQuick 2.5
 
 Rectangle {
 
-    width: 50
-    height: 50
+    width: 150
+    height: 300
     color: "Blue"
 }
