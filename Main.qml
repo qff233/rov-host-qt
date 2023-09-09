@@ -50,7 +50,7 @@ ApplicationWindow {
         }
     }
 
-    About {
+    AboutWindow {
         id: about_window
         visible: false
     }
